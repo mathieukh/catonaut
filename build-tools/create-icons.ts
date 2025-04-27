@@ -1,11 +1,9 @@
 // This file is used to create icons for the manifest.json file.
 // Place an image in the public/assets/images folder and run: `bun run icons` from the root directory.
 // Make sure to change the filename variable to the name of your image.
-// IMPORTANT: You need to have imagemagick installed on your system.
-// On Ubuntu you can install it with: sudo apt-get install imagemagick
 
-import imagemagick from 'imagemagick';
 import path from 'path';
+import Sharp from 'sharp';
 
 const root = path.join(import.meta.dirname, `../public/assets/images/`);
 const filename = 'example.png';
@@ -14,19 +12,11 @@ const filename = 'example.png';
  * Creates icons from an image for the manifest.
  * Sizes: 16, 32, 48, 128
  */
-function createIcons() {
+async function createIcons() {
   for (let size of [16, 32, 48, 128]) {
-    imagemagick.resize(
-      {
-        srcPath: `${root}${filename}`,
-        dstPath: `${root}icon${size}.png`,
-        width: size,
-        height: size,
-      },
-      (err, res) => {
-        if (err) throw err;
-      }
-    );
+    await Sharp(`${root}${filename}`).resize({width: size, height: size})
+    .toFormat('png')
+    .toFile(`${root}icon${size}.png`);
     console.log(`resized ${filename} to ${size}x${size}`);
   }
 }
