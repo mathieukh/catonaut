@@ -6,6 +6,7 @@
     "astro": "^3.2.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@types/chrome": "^0.0.246",
     "@types/imagemagick": "^0.0.33",
     "bun-types": "latest",
@@ -21,7 +22,7 @@
     "build": "astro build && cd build-tools && bun run csp && bun bundler.ts",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,md}' '!build/**' '!node_modules/**'",
+    "format": "biome format --write",
     "csp": "bun extract-inline.ts",
     "icons": "cd build-tools && bun create-icons.ts"
   },
