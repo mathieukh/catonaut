@@ -1,10 +1,8 @@
 {
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts"],
   "compilerOptions": {
-    "types": [
-      "bun-types", // add Bun type definitions
-      "./types.d.ts", // add your own type definitions
-      "@types/chrome"
-    ],
+    "types": ["@types/chrome"],
 
     // enable latest features
     "lib": ["esnext"],
@@ -27,6 +25,5 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
-  },
-  "extends": "astro/tsconfigs/strict"
+  }
 }

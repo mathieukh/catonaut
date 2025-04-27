@@ -6,7 +6,7 @@
 
 import { Glob } from 'bun';
 import { readFile, writeFile } from 'fs/promises';
-import { join } from 'path';
+import path, { join } from 'path';
 import { djb2 } from './hash';
 
 /**
@@ -65,4 +65,5 @@ async function removeInlineScriptAndStyle(directory: string) {
   }
 }
 
-await removeInlineScriptAndStyle('../dist');
+const distFolder = path.join(import.meta.dirname, "..", "dist");
+await removeInlineScriptAndStyle(distFolder);

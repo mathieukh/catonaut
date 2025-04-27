@@ -3,10 +3,11 @@
   "module": "bundler.ts",
   "version": "0.0.1",
   "dependencies": {
-    "astro": "^3.2.1"
+    "astro": "5.7.5"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@types/bun": "^1.2.10",
     "@types/chrome": "^0.0.246",
     "@types/imagemagick": "^0.0.33",
     "bun-types": "latest",
@@ -19,12 +20,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && cd build-tools && bun run csp && bun bundler.ts",
+    "build": "astro build && bun build-tools/extract-inline.ts && bun build-tools/bundler.ts",
     "preview": "astro preview",
     "astro": "astro",
     "format": "biome format --write",
-    "csp": "bun extract-inline.ts",
-    "icons": "cd build-tools && bun create-icons.ts"
+    "icons": "bun build-tools/create-icons.ts"
   },
   "type": "module"
 }

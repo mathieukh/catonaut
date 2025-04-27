@@ -3,9 +3,9 @@
  */
 
 import { readdir } from 'fs/promises';
-import { extname, join } from 'path';
+import path, { extname, join } from 'path';
 
-const sourceDir = '../src/scripts';
+const sourceDir = path.join(import.meta.dirname, '../src/scripts');
 
 /**
  * Recursively get all .ts and .js filepaths from the directory.

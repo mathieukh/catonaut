@@ -5,8 +5,9 @@
 // On Ubuntu you can install it with: sudo apt-get install imagemagick
 
 import imagemagick from 'imagemagick';
+import path from 'path';
 
-const root = `../public/assets/images/`;
+const root = path.join(import.meta.dirname, `../public/assets/images/`);
 const filename = 'example.png';
 
 /**
